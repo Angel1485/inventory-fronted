@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-Inventory</title>
+</head>
+
+<body>
+
+    <!-- Empieza Toolbar / Barra de Menu -->
+    <mat-toolbar>
+        <div class="dashboard-container" [class.is-mobile]="mobileQuery.matches">
+            <mat-toolbar color="primary" class="dashboard-toolbar">
+                <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+                <h1 class="app-name">S-Inventory</h1>
+            </mat-toolbar>
+        </div>
+
+        <div class="right">
+            <ul>
+                <li> 
+                    <button mat-icon-button>
+                        <mat-icon>help_outline</mat-icon>
+                    </button>
+                </li>
+                <li> 
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon>person_outline</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <mat-icon>exit_to_app</mat-icon>
+                        Cerrar Sesion
+                    </mat-menu>
+                </li>
+            </ul>
+        </div>
+    </mat-toolbar>
+
+    <!-- Empieza Sidenav -->
+
+    <mat-sidenav-container class="sidenav-container" 
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" 
+                           [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+                <!-- Profile -->
+                 <div class="profile-card">
+                    <div class="header">
+                        <h2>Angel Sarango</h2>
+                        <h4>angel.sarango14@outlook.com</h4>
+                    </div>
+                 </div>
+                 <mat-divider></mat-divider>
+                     <a mat-list-item [routerLink]="nav.route" *ngFor="let nav of menuNav">
+                        <mat-icon matListItemIcon>{{nav.icon}}</mat-icon>
+                        <span matListItemTitle>{{nav.name}}</span> 
+                    </a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <!-- Contenido central -->
+         <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</body>
+</html>
+
