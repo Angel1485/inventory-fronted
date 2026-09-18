@@ -28,9 +28,11 @@
                     <button mat-button [matMenuTriggerFor]="menu">
                         <mat-icon>person_outline</mat-icon>
                     </button>
-                    <mat-menu #menu="matMenu">
-                        <mat-icon>exit_to_app</mat-icon>
-                        Cerrar Sesion
+                    <mat-menu #menu="matMenu" >
+                        <button mat-menu-item (click)="logout()">
+                            <mat-icon>exit_to_app</mat-icon>
+                            Cerrar Sesion
+                        </button> 
                     </mat-menu>
                 </li>
             </ul>
@@ -47,7 +49,7 @@
                 <!-- Profile -->
                  <div class="profile-card">
                     <div class="header">
-                        <h2>Angel Sarango</h2>
+                        <h2>{{username}}</h2>
                         <h4>angel.sarango14@outlook.com</h4>
                     </div>
                  </div>
