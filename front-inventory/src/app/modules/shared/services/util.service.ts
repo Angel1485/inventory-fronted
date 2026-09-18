@@ -22,16 +22,4 @@ export class UtilService {
       return false;
     }
   }
-
-  isUser(){
-
-    let roles = this.KeycloakService.getUserRoles().filter(role => role == "Admin")
-
-    if(roles.length > 0 ){
-      return true;
-    }else {
-      return false;
-    }
-    
-  }
 }
